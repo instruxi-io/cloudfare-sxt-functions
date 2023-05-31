@@ -61,12 +61,7 @@ async function requestChallenge(request, env) {
 	return [challenge, signedChallenge];
 }
 
-function getCacheKey(request) {
-	return request.url;
-  }
-
 function signChallenge(challenge, privateKey) {
-	console.log(challenge);
 	const message = '\x19Ethereum Signed Message:\n' + challenge.length + challenge;
 	const hashBuffer = keccak256(message);
 	const hashHex = hashBuffer.toString('hex');
@@ -77,7 +72,6 @@ function signChallenge(challenge, privateKey) {
 	const signatureHex = signatureBuffer.toString('hex');
 	return '0x'+signatureHex;
 }
-
 
 async function requestToken(userId, authCode, signedAuthCode, publicKey, apiUrl, scheme) {
 	const url = apiUrl + "auth/token";
