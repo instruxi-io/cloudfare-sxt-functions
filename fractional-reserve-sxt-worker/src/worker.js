@@ -23,8 +23,7 @@ export default {
 		const token = await requestToken(env.USER_ID, challenge[0], challenge[1], env.PUBLIC_KEY, env.API_URL, env.AUTH_SCHEME);
 		const tableData = await querySxT(token['accessToken'], env.RESOURCE_ID, env.SQL_TEXT, env.BISCUIT_INSTRUXI_IONI_AUDIT, env.API_URL);
 		return (new Response(JSON.stringify({'total_reserve': tableData['total_reserve']})));
-	},
-	
+	},	
 };
 
 async function requestChallenge(request, env) {
