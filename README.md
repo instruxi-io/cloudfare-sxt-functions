@@ -1,6 +1,6 @@
-Welcome to the Space and Time Query Deployment Repository, which is part of our entry for the 2023 Spring Hackathon. This repository aims to facilitate the deployment of staging and production Cloudflare Workers for querying Space and Time data.
+### Welcome to the Space and Time Query Deployment Repository, which is part of our entry for the 2023 Spring Hackathon. This repository aims to facilitate the deployment of staging and production Cloudflare Workers for querying Space and Time data.
 
-**Key Features:**
+### Key Features:
 
 **Staging and Production Environments:**
 - Easily deploy Cloudflare Workers to both staging and production environments, allowing for efficient testing and deployment of your Space and Time queries.
@@ -20,12 +20,13 @@ We value your feedback and contributions, so don't hesitate to reach out, submit
 **To begin, make sure you have set up an account in Cloudflare and have coordinated access to the Space and Time database with your Space and Time account representative**
 
 **You need to use the [Wrangler Client] (https://developers.cloudflare.com/workers/wrangler/) to develop and test Cloudfare workers. Git clone this repository and start with the following steps to deploy your own worker**
-1. `npm install` - Note that this project uses Wrangler 3.0.0, but Windows users may need to downgrade to Wrangler 2.0.0 using NPM 
+1. `npm install` 
+    - Note that this project uses Wrangler 3.0.0, but Windows users may need to downgrade to Wrangler 2.0.0 using NPM 
 2. `cd fractional-reserve-sxt-worker/`
 3. `npx wrangler login`
 4. `npx wrangler secret put PRIVATE_KEY <name of worker>` and `npm wrangler secret put BISCUIT_INSTRUXI_IONI_AUDIT <name of worker>`
-- The PRIVATE_KEY must correspond to the PUBLIC_KEY and USER_ID specified in `wrangler.toml`
-- The name of your worker is specified by the `name` entry in the `wrangler.toml` file and concatenating the environment name, `staging` or `production`. For example, Cloudflare will derive `fractional-reserve-sxt-worker-production` if we publish this worker with the `production` environment flag
+    - The PRIVATE_KEY must correspond to the PUBLIC_KEY and USER_ID specified in `wrangler.toml`
+    - The name of your worker is specified by the `name` entry in the `wrangler.toml` file and concatenating the environment name, `staging` or `production`. For example, Cloudflare will derive `fractional-reserve-sxt-worker-production` if we publish this worker with the `production` environment flag
 5. `npx wrangler dev src/worker.js` starts an interactive development console for testing
 6. `npx wrangler publish fractional-reserve-sxt-worker/src/worker.js --env staging` or `npx wrangler publish fractional-reserve-sxt-worker/src/worker.js --env production`
 
