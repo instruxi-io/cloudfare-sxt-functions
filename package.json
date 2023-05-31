@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "buffer": "npm:Buffer@^0.0.0",
+    "Buffer": "^0.0.0",
+    "crypto": "^1.0.1",
+    "ethereumjs-util": "^7.1.5",
+    "js-sha3": "^0.8.0",
+    "keccak": "^3.0.3",
+    "secp256k1": "^5.0.0",
+    "wrangler": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/keccak": "^3.0.1",
+    "keccak256": "^1.0.6"
+  }
+}
