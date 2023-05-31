@@ -20,7 +20,7 @@ Please note that this repository is just one of two repositories associated with
 
 We value your feedback and contributions, so don't hesitate to reach out, submit issues, or contribute to further enhance the functionality and usability of this repository. Happy hacking!
 
-### To begin, make sure you have set up an account in Cloudflare and have coordinated access to the Space and Time database with your Space and Time account representative. You need to use the [Wrangler Client] (https://developers.cloudflare.com/workers/wrangler/) to develop and test Cloudfare workers. Git clone this repository and start with the following steps to deploy your own SxT powered worker**
+### To begin, make sure you have set up an account in Cloudflare and have coordinated access to the Space and Time database with your Space and Time account representative. You will use Cloudflare's Wrangler Client library (https://developers.cloudflare.com/workers/wrangler/) to develop and test Cloudfare workers. Git clone this repository and follow the steps below to get going.
 
 1. `npm install` 
     - Note that this project uses Wrangler 3.0.0, but Windows users may need to downgrade to Wrangler 2.0.0 using NPM 
