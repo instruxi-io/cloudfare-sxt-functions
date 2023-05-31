@@ -4,10 +4,13 @@
 
 **Staging and Production Environments:**
 - Easily deploy Cloudflare Workers to both staging and production environments, allowing for efficient testing and deployment of your Space and Time queries.
+
 **Cloudflare Integration:** 
 - Seamlessly integrate with Cloudflare's powerful infrastructure and security services to ensure reliable and secure query execution.
+
 **Query Space and Time:**
 - Leverage the repository to run queries on Space and Time data, enabling you to analyze and extract valuable insights from this rich dataset.
+
 **Hackathon Entry:** 
 - This repository is developed as part of our entry for the 2023 Spring Hackathon, showcasing our innovative approach to leveraging Cloudflare Workers for Space and Time query deployment.
 
@@ -17,9 +20,8 @@ Please note that this repository is just one of two repositories associated with
 
 We value your feedback and contributions, so don't hesitate to reach out, submit issues, or contribute to further enhance the functionality and usability of this repository. Happy hacking!
 
-**To begin, make sure you have set up an account in Cloudflare and have coordinated access to the Space and Time database with your Space and Time account representative**
+### To begin, make sure you have set up an account in Cloudflare and have coordinated access to the Space and Time database with your Space and Time account representative. You need to use the [Wrangler Client] (https://developers.cloudflare.com/workers/wrangler/) to develop and test Cloudfare workers. Git clone this repository and start with the following steps to deploy your own SxT powered worker**
 
-**You need to use the [Wrangler Client] (https://developers.cloudflare.com/workers/wrangler/) to develop and test Cloudfare workers. Git clone this repository and start with the following steps to deploy your own worker**
 1. `npm install` 
     - Note that this project uses Wrangler 3.0.0, but Windows users may need to downgrade to Wrangler 2.0.0 using NPM 
 2. `cd fractional-reserve-sxt-worker/`
