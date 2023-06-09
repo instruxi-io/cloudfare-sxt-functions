@@ -16,13 +16,15 @@ const pattern = /favicon.ico/
 
 export default {
 	async fetch(request, env, ctx) {
+		const { searchParams } = new URL(request.url)
+		let tokenId = searchParams.get('tokenId')
 		if (pattern.test(request.url)) {
 			return (new Response(JSON.stringify({})));
 		}
 		const challenge = await requestChallenge(request, env);
 		const token = await requestToken(env.USER_ID, challenge[0], challenge[1], env.PUBLIC_KEY, env.API_URL, env.AUTH_SCHEME);
-		const tableData = await querySxT(token['accessToken'], env.RESOURCE_ID, env.SQL_TEXT, env.BISCUIT_INSTRUXI_IONI_AUDIT, env.API_URL);
-		return (new Response(JSON.stringify({'total_reserve': tableData['total_reserve']})));
+		const tableData = await querySxT(token['accessToken'], env.RESOURCE_ID, env.SQL_TEXT + ` and claim_id = ${tokenId}`, env.BISCUIT_INSTRUXI_IONI_AUDIT, env.API_URL);
+		return (new Response(JSON.stringify(tableData)));
 	},	
 };
 
@@ -46,14 +48,14 @@ async function requestChallenge(request, env) {
 		}
 		const clonedResponse = response.clone();
 		cache.put(cacheKey, clonedResponse, { cf: { cacheTtl: 60 } })
-		//event.waitUntil(caches.default.put(cacheKey, clonedResponse, { cf: { cacheTtl: 60 } }));
-		console.log(`cached incoming request with key ${request.url}`);
+		// event.waitUntil(caches.default.put(cacheKey, clonedResponse, { cf: { cacheTtl: 60 } }));
+		// console.log(`cached incoming request with key ${request.url}`);
 		const data = await response.json();
 		const challenge = data['authCode']
 		const signedChallenge = signChallenge(challenge, env.PRIVATE_KEY)
 		return [challenge, signedChallenge];
 	}
-	console.log('cache found');
+	// console.log('cache found');
 	const data = await response.json();
 	const challenge = data['authCode']
 	const signedChallenge = signChallenge(challenge, env.PRIVATE_KEY)
@@ -95,7 +97,7 @@ async function requestToken(userId, authCode, signedAuthCode, publicKey, apiUrl,
 }
 
 async function querySxT(token, resourceId, sqlText, biscuit, apiUrl) {
-	const url = apiUrl+"sql/dql";
+	const url = apiUrl + "sql/dql";
 	const payload = {resourceId: resourceId, sqlText:sqlText};
 	const options = {
 		method: 'POST',
@@ -104,6 +106,6 @@ async function querySxT(token, resourceId, sqlText, biscuit, apiUrl) {
 	};
 	const response = await fetch(url, options);
 	const data = await response.json();
-	return data[0];
+	return data;
 }
 

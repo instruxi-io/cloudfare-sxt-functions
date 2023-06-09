@@ -30,6 +30,8 @@ We value your feedback and contributions, so don't hesitate to reach out, submit
 5. `npx wrangler publish fractional-reserve-sxt-worker/src/worker.js --env staging` 
 6. `npx wrangler secret put PRIVATE_KEY fractional-reserve-sxt-worker-<env>` and `npm wrangler secret put BISCUIT_INSTRUXI_IONI_AUDIT fractional-reserve-sxt-worker-<env>`
 
+Succesfully deploying this Cloudflare worker will result in a URL like so --> https://fractional-reserve-sxt-worker-production.austin6645.workers.dev/
+
 **Comments**
 - `src/worker.js` is the main source of code to execute API calls to Space and Time
     - ***requestChallenge()*** - requests an auth code challenge from the auth API route
